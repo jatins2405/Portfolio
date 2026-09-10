@@ -315,7 +315,14 @@ button {
 
 /* INFINITE SCROLLING MARQUEE TICKER RIBBON */
 .marquee-ribbon {
-  width: 100%;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
   overflow: hidden;
   white-space: nowrap;
   background: rgba(18, 18, 21, 0.35);
@@ -323,7 +330,7 @@ button {
   -webkit-backdrop-filter: blur(8px);
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 1.85rem 0;
+  padding: 1.5rem 0;
   display: flex;
   user-select: none;
 }
@@ -391,17 +398,7 @@ button {
   line-height: 1.65;
 }
 
-.currently-ticker {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  background: var(--bg-surface);
-  border: 1px solid var(--border-color);
-  padding: 0.85rem 1.25rem;
-  border-radius: var(--radius-md);
-  margin-bottom: 2.5rem;
-  font-size: 0.85rem;
-}
+
 
 .hero-ctas {
   display: flex;
@@ -411,8 +408,8 @@ button {
 }
 
 .social-badges-bar {
-  border-top: 1px solid var(--border-color);
-  padding-top: 2rem;
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
   text-align: center;
 }
 
