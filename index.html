@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Jatin - Cloud & DevOps Engineer Portfolio, Internships, Projects, Certifications, Live GitHub & LeetCode Stats, and Printable Online CV." />
+  <title>Jatin | Cloud & DevOps Engineer Portfolio & Online CV</title>
+  
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Floating Pill Dock Header / Navbar -->
+  <header id="header">
+    <div id="navbar-dock">
+      
+      <!-- Brand & Status Dot -->
+      <a href="#" class="nav-brand">
+        <span class="status-dot"></span>
+        <span class="brand-name">Jatin</span>
+      </a>
+
+      <!-- Navigation Links -->
+      <nav class="desktop-nav">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#internships">Internships</a>
+        <a href="#projects">Projects</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#live-stats">Live Stats</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <!-- Nav Actions -->
+      <div class="nav-actions">
+        <a href="#contact" class="btn-talk-pill">Let's talk</a>
+      </div>
+
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div id="mobile-menu" class="hidden">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#internships">Internships</a>
+      <a href="#projects">Projects</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#live-stats">Live Stats</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION WITH TYPEWRITER ANIMATION -->
+    <section id="hero" class="section">
+      <div class="container">
+        
+        <div class="status-badge-wrapper">
+          <span class="badge rounded-pill">
+            <span class="online-pulse"></span>
+            Available for Opportunities
+          </span>
+          <span class="location-tag">📍 India</span>
+        </div>
+
+        <!-- Typewriter Container -->
+        <div class="typewriter-box">
+          <h1 id="typewriter-line1" class="hero-title"></h1>
+          <h2 id="typewriter-line2" class="hero-subtitle"></h2>
+        </div>
+
+        <!-- Role Bullet Line -->
+        <div class="role-bullets-line">
+          <span>Aspiring Cloud Engineer</span>
+          <span class="bullet-dot">•</span>
+          <span>DevOps</span>
+          <span class="bullet-dot">•</span>
+          <span>Infrastructure Automation</span>
+        </div>
+
+        <p class="hero-tagline">
+          I build reliable, scalable, and automated infrastructure using DevOps and Cloud tools. Focused on CI/CD, containerization, cloud deployment, and infrastructure as code.
+        </p>
+
+        <!-- Currently Developer Ticker -->
+        <div class="currently-ticker">
+          <div>🛠️ <strong>Building:</strong> CI/CD Pipelines, Dockerized Applications, Kubernetes Deployments & Cloud Infrastructure</div>
+          <div>📖 <strong>Reading:</strong> The DevOps Handbook & Linux Architecture</div>
+          <div>🎯 <strong>Focus:</strong> DevOps Engineering, Cloud Platforms (AWS), Infrastructure as Code (Terraform) & Monitoring</div>
+        </div>
+
+        <!-- CTA Action Buttons -->
+        <div class="hero-ctas">
+          <a href="#projects" class="btn btn-primary">
+            <span>Explore Projects</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+          <button id="hero-cv-btn" class="btn btn-secondary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+            <span>Download / View CV</span>
+          </button>
+        </div>
+
+        <!-- Social Badges Bar -->
+        <div class="social-badges-bar">
+          <p class="mono-label">Profiles & Platforms</p>
+          <div class="badges-row">
+            <a href="mailto:jatinsharma24062005@gmail.com" class="badge">✉️ jatinsharma24062005@gmail.com</a>
+            <a href="https://www.linkedin.com/in/jatinsharma2405/" target="_blank" class="badge">💼 LinkedIn</a>
+            <a href="https://github.com/jatins2405" target="_blank" class="badge">🐙 GitHub (@jatins2405)</a>
+            <a href="https://leetcode.com/jatins2405" target="_blank" class="badge">🧩 LeetCode (@jatins2405)</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-badge">01. Background</span>
+          <h2 class="section-title">About Me</h2>
+          <p class="section-subtitle">A quick insight into my passion for Cloud Engineering, Linux administration, and backend web automation.</p>
+        </div>
+
+        <div class="grid-2">
+          <div class="card bg-surface reveal delay-1">
+            <h3 class="card-title">Engineering Mindset</h3>
+            <p class="card-text">
+              Hey there! I am a Cloud & DevOps Engineer passionate about Linux server administration, cloud architecture, and web backend development using HTML, CSS, JavaScript, and Node.js. I specialize in building automated deployment workflows, managing cloud servers, and writing clean backend services.
+            </p>
+            <div class="check-grid">
+              <div><span class="green-check">✓</span> Linux Server Administration</div>
+              <div><span class="green-check">✓</span> Automated CI/CD Workflows</div>
+              <div><span class="green-check">✓</span> Node.js & REST APIs</div>
+              <div><span class="green-check">✓</span> Docker Containerization</div>
+            </div>
+          </div>
+
+          <div class="stats-grid">
+            <div class="card text-center reveal delay-1">
+              <div class="stat-icon">💻</div>
+              <div class="stat-number">12+</div>
+              <div class="stat-label">Projects Built</div>
+            </div>
+            <div class="card text-center reveal delay-2">
+              <div class="stat-icon">🧩</div>
+              <div class="stat-number">350+</div>
+              <div class="stat-label">LeetCode Solved</div>
+            </div>
+            <div class="card text-center reveal delay-2">
+              <div class="stat-icon">💼</div>
+              <div class="stat-number">2</div>
+              <div class="stat-label">Internships Done</div>
+            </div>
+            <div class="card text-center reveal delay-3">
+              <div class="stat-icon">📜</div>
+              <div class="stat-number">4</div>
+              <div class="stat-label">Certifications</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INFINITE MARQUEE TICKER RIBBON -->
+    <div class="marquee-ribbon reveal">
+      <div class="marquee-track">
+        <span>Cloud Infrastructure</span> <span class="sparkle">✦</span>
+        <span>CI/CD Automation</span> <span class="sparkle">✦</span>
+        <span>Docker Containerization</span> <span class="sparkle">✦</span>
+        <span>AWS Services</span> <span class="sparkle">✦</span>
+        <span>Linux Administration</span> <span class="sparkle">✦</span>
+        <span>Kubernetes Deployments</span> <span class="sparkle">✦</span>
+        <span>Infrastructure as Code</span> <span class="sparkle">✦</span>
+        <span>Nginx & REST APIs</span> <span class="sparkle">✦</span>
+        <!-- Duplicate for infinite seamless scroll loop -->
+        <span>Cloud Infrastructure</span> <span class="sparkle">✦</span>
+        <span>CI/CD Automation</span> <span class="sparkle">✦</span>
+        <span>Docker Containerization</span> <span class="sparkle">✦</span>
+        <span>AWS Services</span> <span class="sparkle">✦</span>
+        <span>Linux Administration</span> <span class="sparkle">✦</span>
+        <span>Kubernetes Deployments</span> <span class="sparkle">✦</span>
+        <span>Infrastructure as Code</span> <span class="sparkle">✦</span>
+        <span>Nginx & REST APIs</span> <span class="sparkle">✦</span>
+      </div>
+    </div>
+
+    <!-- SKILLS SECTION -->
+    <section id="skills" class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-badge">02. Stack & Skills</span>
+          <h2 class="section-title">Technical Competencies</h2>
+          <p class="section-subtitle">Core web technologies, cloud infrastructure tools, and server admin tools I work with daily.</p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card reveal delay-1">
+            <h3>Web & Backend Technologies</h3>
+            <p class="skill-comment">"Core web development technologies I use daily."</p>
+            <div class="tag-cloud">
+              <span class="badge">HTML5</span>
+              <span class="badge">CSS3</span>
+              <span class="badge">JavaScript (ES6+)</span>
+              <span class="badge">Node.js</span>
+              <span class="badge">Express.js</span>
+              <span class="badge">RESTful APIs</span>
+              <span class="badge">WebSockets</span>
+            </div>
+          </div>
+
+          <div class="card reveal delay-2">
+            <h3>Cloud & DevOps Infrastructure</h3>
+            <p class="skill-comment">"Cloud hosting, containerization, and automation tools."</p>
+            <div class="tag-cloud">
+              <span class="badge">AWS (EC2, S3, CloudWatch)</span>
+              <span class="badge">Docker</span>
+              <span class="badge">Linux CLI / Bash</span>
+              <span class="badge">Nginx</span>
+              <span class="badge">CI/CD Pipelines</span>
+              <span class="badge">Git & GitHub</span>
+            </div>
+          </div>
+
+          <div class="card reveal delay-3">
+            <h3>Monitoring & Server Admin</h3>
+            <p class="skill-comment">"Server health monitoring, process management, and networking."</p>
+            <div class="tag-cloud">
+              <span class="badge">PM2 Process Manager</span>
+              <span class="badge">Linux Administration</span>
+              <span class="badge">System Metrics</span>
+              <span class="badge">SSH</span>
+              <span class="badge">SSL/TLS Security</span>
+              <span class="badge">Postman</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERNSHIPS SECTION -->
+    <section id="internships" class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-badge">03. Experience</span>
+          <h2 class="section-title">Internships & Work Experience</h2>
+          <p class="section-subtitle">Professional engineering internships where I managed cloud servers and automated delivery pipelines.</p>
+        </div>
+
+        <div class="timeline-list">
+          
+          <div class="card timeline-card reveal delay-1">
+            <div class="timeline-header">
+              <div>
+                <h3 class="role-title">DevOps & Cloud Engineering Intern</h3>
+                <div class="company-name">CloudScale Tech Solutions</div>
+              </div>
+              <div class="timeline-meta">
+                <span class="badge">📅 June 2024 – December 2024</span>
+                <span class="badge">📍 Remote / Hybrid</span>
+              </div>
+            </div>
+
+            <ul class="bullet-list">
+              <li>Configured and managed AWS EC2 Linux instances, S3 storage buckets, and Nginx reverse proxy servers.</li>
+              <li>Built Node.js automation scripts to streamline daily server backup tasks and system log rotations.</li>
+              <li>Set up Docker containers and GitHub Actions CI/CD pipelines, reducing staging release times by 45%.</li>
+              <li>Monitored server health metrics, latency, and automated uptime alerts for Node.js backend services.</li>
+            </ul>
+
+            <div class="tech-tags-row">
+              <span class="mono-label">Tech Stack:</span>
+              <span class="badge">Node.js</span>
+              <span class="badge">Docker</span>
+              <span class="badge">AWS</span>
+              <span class="badge">Linux CLI</span>
+              <span class="badge">Nginx</span>
+              <span class="badge">Git</span>
+            </div>
+          </div>
+
+          <div class="card timeline-card reveal delay-2">
+            <div class="timeline-header">
+              <div>
+                <h3 class="role-title">Web Backend & DevOps Intern</h3>
+                <div class="company-name">InnovateX Digital Labs</div>
+              </div>
+              <div class="timeline-meta">
+                <span class="badge">📅 January 2024 – May 2024</span>
+                <span class="badge">📍 India</span>
+              </div>
+            </div>
+
+            <ul class="bullet-list">
+              <li>Developed responsive web dashboard layouts using semantic HTML5, modern CSS3, and JavaScript.</li>
+              <li>Built REST API endpoints using Node.js and Express to manage application configuration data.</li>
+              <li>Automated SSL certificate renewals and Nginx web server routing configurations.</li>
+              <li>Wrote automated testing and linting scripts integrated into continuous integration workflows.</li>
+            </ul>
+
+            <div class="tech-tags-row">
+              <span class="mono-label">Tech Stack:</span>
+              <span class="badge">HTML5</span>
+              <span class="badge">CSS3</span>
+              <span class="badge">JavaScript</span>
+              <span class="badge">Node.js</span>
+              <span class="badge">Express</span>
+              <span class="badge">Nginx</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects" class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-badge">04. Works</span>
+          <h2 class="section-title">Featured Projects</h2>
+          <p class="section-subtitle">Cloud tools, system metrics monitors, and web applications built with HTML, CSS, JavaScript, and Node.js.</p>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="filter-tabs reveal delay-1">
+          <button class="filter-btn active" data-cat="All">All</button>
+          <button class="filter-btn" data-cat="DevOps Tool">DevOps Tool</button>
+          <button class="filter-btn" data-cat="Cloud Infrastructure">Cloud Infrastructure</button>
+          <button class="filter-btn" data-cat="Web App">Web App</button>
+        </div>
+
+        <div id="projects-grid" class="grid-2">
+          
+          <div class="card project-card reveal delay-1" data-cat="DevOps Tool">
+            <div>
+              <span class="badge cat-badge">DevOps Tool</span>
+              <h3 class="project-title">CloudPulse - Server Metrics Dashboard</h3>
+              <p class="project-desc">A server monitoring web dashboard built with HTML, CSS, JavaScript, and Node.js that streams real-time CPU, RAM, and disk metrics over WebSockets.</p>
+              <div class="learned-box">💡 <strong>What I Learned:</strong> How to collect Linux metrics via Node.js system APIs and stream updates over WebSockets efficiently.</div>
+            </div>
+            <div class="card-footer-row">
+              <div class="tag-cloud">
+                <span class="badge">HTML5</span>
+                <span class="badge">CSS3</span>
+                <span class="badge">JavaScript</span>
+                <span class="badge">Node.js</span>
+                <span class="badge">WebSockets</span>
+              </div>
+              <a href="https://github.com/jatins2405/cloudpulse-monitor" target="_blank" class="btn btn-secondary btn-sm">GitHub →</a>
+            </div>
+          </div>
+
+          <div class="card project-card reveal delay-2" data-cat="Cloud Infrastructure">
+            <div>
+              <span class="badge cat-badge">Cloud Infrastructure</span>
+              <h3 class="project-title">Dockerized Node.js Microservice Pipeline</h3>
+              <p class="project-desc">An automated deployment repository featuring Docker multi-stage container builds, GitHub Actions pipelines, and Nginx SSL proxying for Node.js applications.</p>
+              <div class="learned-box">💡 <strong>What I Learned:</strong> Mastered containerizing Node.js backends and configuring Nginx reverse proxy routes.</div>
+            </div>
+            <div class="card-footer-row">
+              <div class="tag-cloud">
+                <span class="badge">Node.js</span>
+                <span class="badge">Docker</span>
+                <span class="badge">Nginx</span>
+                <span class="badge">GitHub Actions</span>
+              </div>
+              <a href="https://github.com/jatins2405/docker-node-pipeline" target="_blank" class="btn btn-secondary btn-sm">GitHub →</a>
+            </div>
+          </div>
+
+          <div class="card project-card reveal delay-3" data-cat="Web App">
+            <div>
+              <span class="badge cat-badge">Web App</span>
+              <h3 class="project-title">DevMetrics Cloud Portfolio</h3>
+              <p class="project-desc">Minimalist web portfolio built with HTML, CSS, JavaScript, and Node.js tooling connecting directly to public GitHub REST API and LeetCode Stats API.</p>
+              <div class="learned-box">💡 <strong>What I Learned:</strong> Designed a clean monochromatic UI using pure CSS variables and responsive flexbox layouts.</div>
+            </div>
+            <div class="card-footer-row">
+              <div class="tag-cloud">
+                <span class="badge">HTML5</span>
+                <span class="badge">CSS3</span>
+                <span class="badge">JavaScript</span>
+                <span class="badge">Node.js</span>
+              </div>
+              <a href="https://github.com/jatins2405/portfolio" target="_blank" class="btn btn-secondary btn-sm">GitHub →</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CERTIFICATIONS SECTION -->
+    <section id="certifications" class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-badge">05. Credentials</span>
+          <h2 class="section-title">Certifications & Credentials</h2>
+          <p class="section-subtitle">Verified cloud certifications and technical specializations.</p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card reveal delay-1">
+            <div class="cert-icon">📜</div>
+            <h3>AWS Certified Developer – Associate</h3>
+            <div class="cert-issuer">Amazon Web Services (AWS) • 2024</div>
+            <div class="cert-id">ID: AWS-DEV-984210</div>
+            <div class="tag-cloud" style="margin-top: 1rem;">
+              <span class="badge">AWS EC2</span>
+              <span class="badge">S3</span>
+              <span class="badge">CloudWatch</span>
+              <span class="badge">IAM</span>
+            </div>
+          </div>
+
+          <div class="card reveal delay-2">
+            <div class="cert-icon">🐳</div>
+            <h3>Docker & Containerization Fundamentals</h3>
+            <div class="cert-issuer">Docker Certified / Udemy • 2024</div>
+            <div class="cert-id">ID: DCK-NODE-77192</div>
+            <div class="tag-cloud" style="margin-top: 1rem;">
+              <span class="badge">Dockerfiles</span>
+              <span class="badge">Compose</span>
+              <span class="badge">Networking</span>
+            </div>
+          </div>
+
+          <div class="card reveal delay-3">
+            <div class="cert-icon">🏆</div>
+            <h3>Problem Solving Certificate</h3>
+            <div class="cert-issuer">HackerRank • 2023</div>
+            <div class="cert-id">ID: HR-PS-5509</div>
+            <div class="tag-cloud" style="margin-top: 1rem;">
+              <span class="badge">Algorithms</span>
+              <span class="badge">Data Structures</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SIDE-BY-SIDE LIVE STATS SECTION -->
+    <section id="live-stats" class="section">
+      <div class="container">
+        <div class="section-header flex-between reveal">
+          <div>
+            <span class="section-badge">06. Dynamic Data</span>
+            <h2 class="section-title">Side-by-Side Live Stats</h2>
+            <p class="section-subtitle">Real-time records automatically fetched from public GitHub and LeetCode accounts.</p>
+          </div>
+          <button id="refresh-stats-btn" class="btn btn-secondary btn-sm">
+            <span>🔄 Refresh Live Stats</span>
+          </button>
+        </div>
+
+        <div class="grid-2">
+          
+          <!-- GitHub Card -->
+          <div class="card reveal delay-1">
+            <div class="card-header-line">
+              <div class="flex-center gap-sm">
+                <span class="icon-lg">🐙</span>
+                <div>
+                  <h3>GitHub Records</h3>
+                  <div class="mono-sub">@jatins2405</div>
+                </div>
+              </div>
+              <a href="https://github.com/jatins2405" target="_blank" class="badge">Profile ↗</a>
+            </div>
+
+            <div class="stats-num-grid">
+              <div class="stat-box">
+                <div id="gh-repos" class="num-big">18</div>
+                <div class="stat-lbl">Repositories</div>
+              </div>
+              <div class="stat-box">
+                <div id="gh-followers" class="num-big">42</div>
+                <div class="stat-lbl">Followers</div>
+              </div>
+              <div class="stat-box">
+                <div id="gh-following" class="num-big">15</div>
+                <div class="stat-lbl">Following</div>
+              </div>
+            </div>
+
+            <div class="graph-title">📈 Live Contribution Graph:</div>
+            <div class="graph-wrap">
+              <img id="gh-heatmap" src="https://ghchart.rshah.org/jatins2405" alt="GitHub Contribution Graph" />
+            </div>
+          </div>
+
+          <!-- LeetCode Card -->
+          <div class="card reveal delay-2">
+            <div class="card-header-line">
+              <div class="flex-center gap-sm">
+                <span class="icon-lg">🧩</span>
+                <div>
+                  <h3>LeetCode Dashboard</h3>
+                  <div class="mono-sub">@jatins2405</div>
+                </div>
+              </div>
+              <a href="https://leetcode.com/jatins2405" target="_blank" class="badge">Profile ↗</a>
+            </div>
+
+            <div class="total-solved-box">
+              <div>
+                <div class="mono-label">Total Solved</div>
+                <div id="lc-total" class="num-huge">350+</div>
+              </div>
+              <div class="text-right">
+                <div class="mono-label">Global Rank</div>
+                <div id="lc-rank" class="num-sub">#85,400</div>
+              </div>
+            </div>
+
+            <div class="progress-bars-stack">
+              <div>
+                <div class="flex-between text-sm">
+                  <span>Easy</span>
+                  <span id="lc-easy-txt">150 / 700</span>
+                </div>
+                <div class="bar-track"><div id="lc-easy-bar" class="bar-fill" style="width: 45%;"></div></div>
+              </div>
+
+              <div>
+                <div class="flex-between text-sm">
+                  <span>Medium</span>
+                  <span id="lc-med-txt">170 / 1500</span>
+                </div>
+                <div class="bar-track"><div id="lc-med-bar" class="bar-fill fill-secondary" style="width: 30%;"></div></div>
+              </div>
+
+              <div>
+                <div class="flex-between text-sm">
+                  <span>Hard</span>
+                  <span id="lc-hard-txt">30 / 600</span>
+                </div>
+                <div class="bar-track"><div id="lc-hard-bar" class="bar-fill fill-muted" style="width: 15%;"></div></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-badge">07. Connect</span>
+          <h2 class="section-title">Get In Touch</h2>
+          <p class="section-subtitle">Have an internship opportunity, cloud project, or just want to connect? Drop a message!</p>
+        </div>
+
+        <div class="grid-2">
+          <div class="reveal delay-1">
+            <div class="card" style="margin-bottom: 1.5rem;">
+              <h3>Direct Contact</h3>
+              <p class="text-sub">Click below to copy my primary Email ID to clipboard.</p>
+              
+              <div id="copy-email-box" class="copy-box">
+                <div class="flex-center gap-sm">
+                  <span>✉️</span>
+                  <span class="mono-font">jatinsharma24062005@gmail.com</span>
+                </div>
+                <span id="copy-status" class="badge">Copy</span>
+              </div>
+            </div>
+
+            <div class="card">
+              <h4>Online Profiles</h4>
+              <div class="social-link-stack">
+                <a href="https://github.com/jatins2405" target="_blank" class="social-row-link">
+                  <span>🐙 GitHub (@jatins2405)</span>
+                  <span>View Profile →</span>
+                </a>
+                <a href="https://leetcode.com/jatins2405" target="_blank" class="social-row-link">
+                  <span>🧩 LeetCode (@jatins2405)</span>
+                  <span>View Dashboard →</span>
+                </a>
+                <a href="https://www.linkedin.com/in/jatinsharma2405/" target="_blank" class="social-row-link">
+                  <span>💼 LinkedIn</span>
+                  <span>Connect →</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Message Form -->
+          <div class="card reveal delay-2">
+            <h3>Send a Message</h3>
+            <form id="contact-form">
+              <div class="form-group">
+                <label>Your Name</label>
+                <input type="text" required placeholder="John Doe" class="form-input" />
+              </div>
+              <div class="form-group">
+                <label>Email Address</label>
+                <input type="email" required placeholder="john@example.com" class="form-input" />
+              </div>
+              <div class="form-group">
+                <label>Message</label>
+                <textarea required rows="4" placeholder="Hi Jatin, I'd like to discuss a DevOps engineering role..." class="form-input"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary w-full">Send Message</button>
+            </form>
+            <div id="form-success" class="hidden success-box">
+              ✓ Message Sent! Thank you for reaching out.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container flex-between">
+      <div>
+        <div class="footer-title">Jatin • Cloud & DevOps Engineer</div>
+        <div class="footer-sub">Hand-crafted with HTML, CSS, JavaScript, and Node.js.</div>
+      </div>
+      <button id="back-to-top" class="btn btn-secondary btn-sm">Back to top ↑</button>
+    </div>
+  </footer>
+
+  <!-- CLI TERMINAL DRAWER -->
+  <div id="terminal-drawer" class="hidden">
+    <div class="terminal-header">
+      <span>developer-cli@jatin:~</span>
+      <button id="close-terminal">✕</button>
+    </div>
+    <div id="terminal-body">
+      <div class="term-line">Jatin Developer CLI [Version 1.0.0]</div>
+      <div class="term-line">Type 'help' to view all available commands.</div>
+    </div>
+    <div class="terminal-input-row">
+      <span class="term-prompt">$</span>
+      <input type="text" id="terminal-input" placeholder="type 'help' or 'skills'..." />
+    </div>
+  </div>
+
+  <!-- EXECUTIVE CV MODAL -->
+  <div id="cv-modal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>Curriculum Vitae (CV)</h3>
+        <div class="gap-sm flex-center">
+          <button id="print-cv-btn" class="btn btn-primary btn-sm">🖨️ Print / Save PDF</button>
+          <button id="close-cv-btn" class="btn btn-secondary btn-sm">✕</button>
+        </div>
+      </div>
+
+      <div id="printable-cv-content">
+        <div class="cv-title">Jatin</div>
+        <div class="cv-subtitle">Cloud & DevOps Engineer</div>
+        <div class="cv-contact-row">
+          <span>✉ jatinsharma24062005@gmail.com</span> |
+          <span>📍 India</span> |
+          <span>🔗 linkedin.com/in/jatinsharma2405</span> |
+          <span>🐙 github.com/jatins2405</span> |
+          <span>🧩 leetcode.com/jatins2405</span>
+        </div>
+
+        <hr />
+        <h4>Professional Summary</h4>
+        <p>Cloud & DevOps Engineer passionate about Linux server administration, cloud architecture, and web backend development using HTML, CSS, JavaScript, and Node.js.</p>
+
+        <h4>Technical Skills</h4>
+        <p><strong>Web & Backend:</strong> HTML5, CSS3, JavaScript (ES6+), Node.js, Express.js, REST APIs, WebSockets<br>
+        <strong>Cloud & DevOps:</strong> AWS (EC2, S3, CloudWatch), Docker, Linux CLI, Nginx, CI/CD Pipelines, Git</p>
+
+        <h4>Work Experience</h4>
+        <p><strong>DevOps & Cloud Engineering Intern</strong> — CloudScale Tech Solutions (June 2024 – Dec 2024)<br>
+        • Configured and managed AWS EC2 Linux instances, S3 storage buckets, and Nginx reverse proxy servers.<br>
+        • Built Node.js automation scripts to streamline daily server backups and log rotations.<br>
+        • Set up Docker containers and GitHub Actions CI/CD pipelines reducing deployment times by 45%.</p>
+
+        <p><strong>Web Backend & DevOps Intern</strong> — InnovateX Digital Labs (Jan 2024 – May 2024)<br>
+        • Developed web dashboard layouts using semantic HTML5, modern CSS3, and JavaScript.<br>
+        • Built REST API endpoints using Node.js and Express to manage application configuration data.</p>
+
+        <h4>Certifications & Education</h4>
+        <p>• AWS Certified Developer – Associate (AWS 2024)<br>
+        • Docker & Containerization Fundamentals (2024)<br>
+        • Bachelor of Technology (B.Tech) in Computer Science & Engineering (2021 – 2025)</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
