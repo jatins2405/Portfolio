@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -32,7 +32,8 @@
         <a href="#internships">Internships</a>
         <a href="#projects">Projects</a>
         <a href="#certifications">Certifications</a>
-        <a href="#live-stats">Live Stats</a>
+        <a href="#github-stats">GitHub Stats</a>
+        <a href="#leetcode-stats">LeetCode Stats</a>
         <a href="#contact">Contact</a>
       </nav>
 
@@ -50,7 +51,8 @@
       <a href="#internships">Internships</a>
       <a href="#projects">Projects</a>
       <a href="#certifications">Certifications</a>
-      <a href="#live-stats">Live Stats</a>
+      <a href="#github-stats">GitHub Stats</a>
+      <a href="#leetcode-stats">LeetCode Stats</a>
       <a href="#contact">Contact</a>
     </div>
   </header>
@@ -91,10 +93,10 @@
         <div class="social-badges-bar">
           <p class="mono-label">Profiles & Platforms</p>
           <div class="badges-row">
-            <a href="mailto:jatinsharma24062005@gmail.com" class="badge">✉️ jatinsharma24062005@gmail.com</a>
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=jatinsharma24062005@gmail.com" target="_blank" class="badge">✉️ jatinsharma24062005@gmail.com</a>
             <a href="https://www.linkedin.com/in/jatinsharma2405/" target="_blank" class="badge">💼 LinkedIn</a>
             <a href="https://github.com/jatins2405" target="_blank" class="badge">🐙 GitHub (@jatins2405)</a>
-            <a href="https://leetcode.com/jatins2405" target="_blank" class="badge">🧩 LeetCode (@jatins2405)</a>
+            <a href="https://leetcode.com/u/DEX010/" target="_blank" class="badge">🧩 LeetCode (@DEX010)</a>
           </div>
         </div>
 
@@ -440,107 +442,200 @@
       </div>
     </section>
 
-    <!-- SIDE-BY-SIDE LIVE STATS SECTION -->
-    <section id="live-stats" class="section">
+    <!-- GITHUB LIVE STATS SECTION -->
+    <section id="github-stats" class="section">
       <div class="container">
         <div class="section-header flex-between reveal">
           <div>
-            <span class="section-badge">06. Dynamic Data</span>
-            <h2 class="section-title">Side-by-Side Live Stats</h2>
-            <p class="section-subtitle">Real-time records automatically fetched from public GitHub and LeetCode accounts.</p>
+            <span class="section-badge">06. GitHub Activity</span>
+            <h2 class="section-title">GitHub Records & Contributions</h2>
+            <p class="section-subtitle">Real-time public repositories, followers, and contribution activity fetched live from GitHub REST API.</p>
           </div>
-          <button id="refresh-stats-btn" class="btn btn-secondary btn-sm">
-            <span>🔄 Refresh Live Stats</span>
+          <button id="refresh-gh-btn" class="btn btn-secondary btn-sm">
+            <span>🔄 Refresh GitHub Data</span>
           </button>
         </div>
 
-        <div class="grid-2">
+        <!-- GitHub Card (Full Container Width) -->
+        <div class="card reveal delay-1">
+          <div class="card-header-line">
+            <div class="flex-center gap-sm">
+              <span class="icon-lg">🐙</span>
+              <div>
+                <h3>GitHub Records</h3>
+                <div class="mono-sub">@jatins2405</div>
+              </div>
+            </div>
+            <a href="https://github.com/jatins2405" target="_blank" class="badge">Profile ↗</a>
+          </div>
+
+          <div class="stats-num-grid">
+            <div class="stat-box">
+              <div id="gh-repos" class="num-big">18</div>
+              <div class="stat-lbl">Repositories</div>
+            </div>
+            <div class="stat-box">
+              <div id="gh-followers" class="num-big">42</div>
+              <div class="stat-lbl">Followers</div>
+            </div>
+            <div class="stat-box">
+              <div id="gh-following" class="num-big">15</div>
+              <div class="stat-lbl">Following</div>
+            </div>
+          </div>
+
+          <div class="graph-title">📈 Live Contribution Graph:</div>
+          <div class="graph-wrap">
+            <img id="gh-heatmap" src="https://ghchart.rshah.org/jatins2405" alt="GitHub Contribution Graph" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LEETCODE LIVE STATS SECTION -->
+    <section id="leetcode-stats" class="section">
+      <div class="container">
+        <div class="section-header flex-between reveal">
+          <div>
+            <span class="section-badge">07. LeetCode Performance</span>
+            <h2 class="section-title">LeetCode Live Dashboard</h2>
+            <p class="section-subtitle">Real-time solved problem count, global ranking, difficulty breakdown, and activity heatmap fetched live for @DEX010.</p>
+          </div>
+          <button id="refresh-lc-btn" class="btn btn-secondary btn-sm">
+            <span>🔄 Refresh LeetCode Data</span>
+          </button>
+        </div>
+
+        <!-- Top Row: Acceptance Rate & Performance Stats -->
+        <div class="grid-2 lc-top-grid">
           
-          <!-- GitHub Card -->
-          <div class="card reveal delay-1">
+          <!-- Card 1: Acceptance Rate Ring & Difficulty Breakdown -->
+          <div class="card lc-card reveal delay-1">
             <div class="card-header-line">
               <div class="flex-center gap-sm">
-                <span class="icon-lg">🐙</span>
+                <span class="icon-lg">🎯</span>
                 <div>
-                  <h3>GitHub Records</h3>
-                  <div class="mono-sub">@jatins2405</div>
+                  <h3>Acceptance Rate</h3>
+                  <div class="mono-sub">Difficulty Breakdown</div>
                 </div>
               </div>
-              <a href="https://github.com/jatins2405" target="_blank" class="badge">Profile ↗</a>
             </div>
 
-            <div class="stats-num-grid">
-              <div class="stat-box">
-                <div id="gh-repos" class="num-big">18</div>
-                <div class="stat-lbl">Repositories</div>
-              </div>
-              <div class="stat-box">
-                <div id="gh-followers" class="num-big">42</div>
-                <div class="stat-lbl">Followers</div>
-              </div>
-              <div class="stat-box">
-                <div id="gh-following" class="num-big">15</div>
-                <div class="stat-lbl">Following</div>
-              </div>
-            </div>
-
-            <div class="graph-title">📈 Live Contribution Graph:</div>
-            <div class="graph-wrap">
-              <img id="gh-heatmap" src="https://ghchart.rshah.org/jatins2405" alt="GitHub Contribution Graph" />
-            </div>
-          </div>
-
-          <!-- LeetCode Card -->
-          <div class="card reveal delay-2">
-            <div class="card-header-line">
-              <div class="flex-center gap-sm">
-                <span class="icon-lg">🧩</span>
-                <div>
-                  <h3>LeetCode Dashboard</h3>
-                  <div class="mono-sub">@jatins2405</div>
+            <!-- Ring Gauge Meter -->
+            <div class="lc-ring-container">
+              <div class="lc-ring-wrap">
+                <svg viewBox="0 0 100 100" class="lc-ring-svg">
+                  <circle cx="50" cy="50" r="40" class="lc-ring-bg"></circle>
+                  <circle cx="50" cy="50" r="40" class="lc-ring-progress" id="lc-ring-circle" stroke-dasharray="251.2" stroke-dashoffset="251.2"></circle>
+                </svg>
+                <div class="lc-ring-text">
+                  <span id="lc-acc-rate" class="num-big">0.0%</span>
+                  <span class="lc-ring-label">Acceptance</span>
                 </div>
               </div>
-              <a href="https://leetcode.com/jatins2405" target="_blank" class="badge">Profile ↗</a>
             </div>
 
-            <div class="total-solved-box">
-              <div>
-                <div class="mono-label">Total Solved</div>
-                <div id="lc-total" class="num-huge">350+</div>
-              </div>
-              <div class="text-right">
-                <div class="mono-label">Global Rank</div>
-                <div id="lc-rank" class="num-sub">#85,400</div>
-              </div>
-            </div>
-
-            <div class="progress-bars-stack">
+            <div class="progress-bars-stack" style="margin-top: 1rem;">
               <div>
                 <div class="flex-between text-sm">
-                  <span>Easy</span>
-                  <span id="lc-easy-txt">150 / 700</span>
+                  <span class="lc-diff-label easy">Easy</span>
+                  <span id="lc-easy-txt">0 / 0</span>
                 </div>
-                <div class="bar-track"><div id="lc-easy-bar" class="bar-fill" style="width: 45%;"></div></div>
+                <div class="bar-track"><div id="lc-easy-bar" class="bar-fill fill-easy" style="width: 0%;"></div></div>
               </div>
 
               <div>
                 <div class="flex-between text-sm">
-                  <span>Medium</span>
-                  <span id="lc-med-txt">170 / 1500</span>
+                  <span class="lc-diff-label medium">Medium</span>
+                  <span id="lc-med-txt">0 / 0</span>
                 </div>
-                <div class="bar-track"><div id="lc-med-bar" class="bar-fill fill-secondary" style="width: 30%;"></div></div>
+                <div class="bar-track"><div id="lc-med-bar" class="bar-fill fill-medium" style="width: 0%;"></div></div>
               </div>
 
               <div>
                 <div class="flex-between text-sm">
-                  <span>Hard</span>
-                  <span id="lc-hard-txt">30 / 600</span>
+                  <span class="lc-diff-label hard">Hard</span>
+                  <span id="lc-hard-txt">0 / 0</span>
                 </div>
-                <div class="bar-track"><div id="lc-hard-bar" class="bar-fill fill-muted" style="width: 15%;"></div></div>
+                <div class="bar-track"><div id="lc-hard-bar" class="bar-fill fill-hard" style="width: 0%;"></div></div>
               </div>
             </div>
           </div>
 
+          <!-- Card 2: Performance Stats Metrics & Recent Submission -->
+          <div class="card lc-card reveal delay-2">
+            <div class="card-header-line">
+              <div class="flex-center gap-sm">
+                <span class="icon-lg">📊</span>
+                <div>
+                  <h3>Performance Stats</h3>
+                  <div class="mono-sub">@DEX010 Metrics</div>
+                </div>
+              </div>
+              <a href="https://leetcode.com/u/DEX010/" target="_blank" class="badge">Profile ↗</a>
+            </div>
+
+            <div class="lc-metrics-grid">
+              <div class="stat-box">
+                <div class="stat-lbl">Total Solved</div>
+                <div id="lc-total" class="num-big">1</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-lbl">Global Rank</div>
+                <div id="lc-rank" class="num-big">#5.0M</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-lbl">Submissions</div>
+                <div id="lc-subs" class="num-big">6</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-lbl">Points</div>
+                <div id="lc-points" class="num-big">98</div>
+              </div>
+            </div>
+
+            <div class="lc-recent-box">
+              <div class="mono-label" style="margin-bottom: 0.4rem;">Latest Submission</div>
+              <div class="flex-between align-center">
+                <div>
+                  <span id="lc-recent-title" class="recent-title">Two Sum</span>
+                  <span id="lc-recent-lang" class="badge" style="margin-left: 0.5rem;">C++</span>
+                </div>
+                <span id="lc-recent-status" class="status-pill accepted">Accepted</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Bottom Row: Activity Heatmap Card (Full Width Below) -->
+        <div class="card lc-card lc-heatmap-card reveal delay-3" style="margin-top: 1.5rem;">
+          <div class="card-header-line">
+            <div class="flex-center gap-sm">
+              <span class="icon-lg">📅</span>
+              <div>
+                <h3>Submission Activity</h3>
+                <div class="mono-sub">Submission Calendar Grid</div>
+              </div>
+            </div>
+            <span id="lc-active-days" class="badge">Active Days: 0</span>
+          </div>
+
+          <div id="lc-heatmap-grid" class="lc-heatmap-grid">
+            <!-- Dynamically populated via script.js -->
+          </div>
+
+          <div class="heatmap-legend flex-between text-sm" style="margin-top: 1rem;">
+            <span class="text-muted">Less</span>
+            <div class="legend-squares flex-center gap-sm">
+              <span class="lc-sq sq-0"></span>
+              <span class="lc-sq sq-1"></span>
+              <span class="lc-sq sq-2"></span>
+              <span class="lc-sq sq-3"></span>
+              <span class="lc-sq sq-4"></span>
+            </div>
+            <span class="text-muted">More</span>
+          </div>
         </div>
       </div>
     </section>
@@ -549,7 +644,7 @@
     <section id="contact" class="section">
       <div class="container">
         <div class="section-header reveal">
-          <span class="section-badge">07. Connect</span>
+          <span class="section-badge">08. Connect</span>
           <h2 class="section-title">Get In Touch</h2>
           <p class="section-subtitle">Have an internship opportunity, cloud project, or just want to connect? Drop a message!</p>
         </div>
@@ -576,8 +671,8 @@
                   <span>🐙 GitHub (@jatins2405)</span>
                   <span>View Profile →</span>
                 </a>
-                <a href="https://leetcode.com/jatins2405" target="_blank" class="social-row-link">
-                  <span>🧩 LeetCode (@jatins2405)</span>
+                <a href="https://leetcode.com/u/DEX010/" target="_blank" class="social-row-link">
+                  <span>🧩 LeetCode (@DEX010)</span>
                   <span>View Dashboard →</span>
                 </a>
                 <a href="https://www.linkedin.com/in/jatinsharma2405/" target="_blank" class="social-row-link">
@@ -594,11 +689,11 @@
             <form id="contact-form">
               <div class="form-group">
                 <label>Your Name</label>
-                <input type="text" required placeholder="John Doe" class="form-input" />
+                <input type="text" required placeholder="Abhi" class="form-input" />
               </div>
               <div class="form-group">
                 <label>Email Address</label>
-                <input type="email" required placeholder="john@example.com" class="form-input" />
+                <input type="email" required placeholder="abhi@example.com" class="form-input" />
               </div>
               <div class="form-group">
                 <label>Message</label>
@@ -661,7 +756,7 @@
           <span>📍 India</span> |
           <span>🔗 linkedin.com/in/jatinsharma2405</span> |
           <span>🐙 github.com/jatins2405</span> |
-          <span>🧩 leetcode.com/jatins2405</span>
+          <span>🧩 leetcode.com/u/DEX010/</span>
         </div>
 
         <hr />

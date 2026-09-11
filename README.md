@@ -28,7 +28,7 @@ portfolio/
    - Navbar dynamically shrinks into a floating centered pill dock (`border-radius: 9999px`) on scroll with glassmorphism backdrop blur.
 
 3. **⚡ Side-by-Side Live Stats Sync**:
-   - Directly fetches live public statistics from GitHub REST API (`https://api.github.com/users/jatins2405`) and LeetCode Stats API (`https://leetcode-stats-api.herokuapp.com/jatins2405`).
+   - Directly fetches live public statistics from GitHub REST API (`https://api.github.com/users/jatins2405`) and LeetCode Stats API (`https://leetcode-stats-api.herokuapp.com/DEX010`).
 
 4. **📄 Printable Executive CV Modal**:
    - One-click **Print / Save PDF** modal trigger (`window.print()`).

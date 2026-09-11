@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
           elLine1.innerHTML = `${typed}<span class="typing-cursor">|</span>`;
         }
         idx1++;
-        setTimeout(runTypewriterLoop, 60);
+        setTimeout(runTypewriterLoop, 75);
         return;
       } else {
         isLine1Typed = true;
@@ -53,26 +53,26 @@ document.addEventListener('DOMContentLoaded', () => {
       if (idx2 < currentLine2.length) {
         elLine2.innerHTML = `${currentLine2.slice(0, idx2 + 1)}<span class="typing-cursor">|</span>`;
         idx2++;
-        setTimeout(runTypewriterLoop, 45);
+        setTimeout(runTypewriterLoop, 56);
       } else {
-        // Line 2 finished typing, hold for 2.5s before deleting
+        // Line 2 finished typing, hold before deleting
         elLine2.innerHTML = `${currentLine2}<span class="typing-cursor">|</span>`;
         setTimeout(() => {
           isDeleting = true;
           runTypewriterLoop();
-        }, 2500);
+        }, 3125);
       }
     } else {
       // Erasing Line 2
       if (idx2 > 0) {
         idx2--;
         elLine2.innerHTML = `${currentLine2.slice(0, idx2)}<span class="typing-cursor">|</span>`;
-        setTimeout(runTypewriterLoop, 25);
+        setTimeout(runTypewriterLoop, 31);
       } else {
         // Erase complete, move to next title in loop
         isDeleting = false;
         titleIndex = (titleIndex + 1) % line2Titles.length;
-        setTimeout(runTypewriterLoop, 300);
+        setTimeout(runTypewriterLoop, 375);
       }
     }
   }
@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 5. SIDE-BY-SIDE LIVE STATS API FETCH (GitHub & LeetCode)
   const ghUsername = 'jatins2405';
-  const lcUsername = 'jatins2405';
+  const lcUsername = 'DEX010';
 
   async function fetchGitHubStats() {
     try {
@@ -151,32 +151,183 @@ document.addEventListener('DOMContentLoaded', () => {
 
   async function fetchLeetCodeStats() {
     try {
-      const res = await fetch(`https://leetcode-stats-api.herokuapp.com/${lcUsername}`);
+      const res = await fetch(`https://leetcode-api-faisalshohag.vercel.app/${lcUsername}`);
       if (!res.ok) throw new Error('LeetCode API Error');
       const data = await res.json();
-      if (data.status === 'success') {
-        document.getElementById('lc-total').textContent = data.totalSolved || '350+';
-        document.getElementById('lc-rank').textContent = data.ranking ? `#${data.ranking.toLocaleString()}` : '#85,400';
-        document.getElementById('lc-easy-txt').textContent = `${data.easySolved || 150} / ${data.totalEasy || 700}`;
-        document.getElementById('lc-med-txt').textContent = `${data.mediumSolved || 170} / ${data.totalMedium || 1500}`;
-        document.getElementById('lc-hard-txt').textContent = `${data.hardSolved || 30} / ${data.totalHard || 600}`;
 
-        document.getElementById('lc-easy-bar').style.width = `${Math.min(100, ((data.easySolved || 150) / (data.totalEasy || 700)) * 100)}%`;
-        document.getElementById('lc-med-bar').style.width = `${Math.min(100, ((data.mediumSolved || 170) / (data.totalMedium || 1500)) * 100)}%`;
-        document.getElementById('lc-hard-bar').style.width = `${Math.min(100, ((data.hardSolved || 30) / (data.totalHard || 600)) * 100)}%`;
+      // 1. Total Solved, Ranking & Contribution Points
+      const totalSolved = data.totalSolved ?? 1;
+      const ranking = data.ranking ? `#${data.ranking.toLocaleString()}` : '#5,000,001';
+      const points = data.contributionPoint ?? 98;
+      
+      let acSubs = 4;
+      let totalSubs = 6;
+
+      if (data.matchedUserStats && data.matchedUserStats.acSubmissionNum) {
+        const allAc = data.matchedUserStats.acSubmissionNum.find(item => item.difficulty === 'All');
+        if (allAc) acSubs = allAc.submissions;
       }
+      if (data.matchedUserStats && data.matchedUserStats.totalSubmissionNum) {
+        const allTotal = data.matchedUserStats.totalSubmissionNum.find(item => item.difficulty === 'All');
+        if (allTotal) totalSubs = allTotal.submissions;
+      }
+
+      const accRate = totalSubs > 0 ? ((acSubs / totalSubs) * 100).toFixed(1) : '66.7';
+
+      // Update DOM elements
+      const elAcc = document.getElementById('lc-acc-rate');
+      if (elAcc) elAcc.textContent = `${accRate}%`;
+
+      const circle = document.getElementById('lc-ring-circle');
+      if (circle) {
+        const circumference = 251.2;
+        const offset = circumference - (parseFloat(accRate) / 100) * circumference;
+        circle.style.strokeDashoffset = offset;
+      }
+
+      // Difficulty breakdown
+      const easySolved = data.easySolved ?? 1;
+      const totalEasy = data.totalEasy ?? 963;
+      const medSolved = data.mediumSolved ?? 0;
+      const totalMed = data.totalMedium ?? 2111;
+      const hardSolved = data.hardSolved ?? 0;
+      const totalHard = data.totalHard ?? 973;
+
+      document.getElementById('lc-easy-txt').textContent = `${easySolved} / ${totalEasy}`;
+      document.getElementById('lc-med-txt').textContent = `${medSolved} / ${totalMed}`;
+      document.getElementById('lc-hard-txt').textContent = `${hardSolved} / ${totalHard}`;
+
+      document.getElementById('lc-easy-bar').style.width = `${Math.min(100, Math.max(0.5, (easySolved / totalEasy) * 100))}%`;
+      document.getElementById('lc-med-bar').style.width = `${Math.min(100, (medSolved / totalMed) * 100)}%`;
+      document.getElementById('lc-hard-bar').style.width = `${Math.min(100, (hardSolved / totalHard) * 100)}%`;
+
+      // Metrics Card
+      document.getElementById('lc-total').textContent = totalSolved;
+      document.getElementById('lc-rank').textContent = ranking;
+      document.getElementById('lc-subs').textContent = totalSubs;
+      document.getElementById('lc-points').textContent = points;
+
+      // Recent Submission
+      if (data.recentSubmissions && data.recentSubmissions.length > 0) {
+        const recent = data.recentSubmissions[0];
+        document.getElementById('lc-recent-title').textContent = recent.title || 'Two Sum';
+        document.getElementById('lc-recent-lang').textContent = (recent.lang || 'cpp').toUpperCase();
+        document.getElementById('lc-recent-status').textContent = recent.statusDisplay || 'Accepted';
+      }
+
+      // Heatmap Grid
+      renderLeetCodeHeatmap(data.submissionCalendar || {"1762819200": 4, "1782950400": 1});
+
     } catch (err) {
-      console.warn('LeetCode Stats API fallback:', err);
+      console.warn('LeetCode API Fetch Error, loading live stats defaults:', err);
+      renderLeetCodeDefaults();
     }
+  }
+
+  let lcTooltipEl = document.getElementById('lc-heatmap-tooltip');
+  if (!lcTooltipEl) {
+    lcTooltipEl = document.createElement('div');
+    lcTooltipEl.id = 'lc-heatmap-tooltip';
+    lcTooltipEl.className = 'lc-tooltip hidden';
+    document.body.appendChild(lcTooltipEl);
+  }
+
+  function showLcTooltip(target, text) {
+    lcTooltipEl.textContent = text;
+    lcTooltipEl.classList.remove('hidden');
+    const rect = target.getBoundingClientRect();
+    const scrollX = window.scrollX || window.pageXOffset;
+    const scrollY = window.scrollY || window.pageYOffset;
+    
+    lcTooltipEl.style.left = `${rect.left + scrollX + rect.width / 2}px`;
+    lcTooltipEl.style.top = `${rect.top + scrollY - 8}px`;
+  }
+
+  function hideLcTooltip() {
+    if (lcTooltipEl) lcTooltipEl.classList.add('hidden');
+  }
+
+  function renderLeetCodeHeatmap(calendar) {
+    const gridEl = document.getElementById('lc-heatmap-grid');
+    if (!gridEl) return;
+    gridEl.innerHTML = '';
+
+    // Calculate active days count
+    const activeDaysCount = Object.keys(calendar).length;
+    const activeDaysEl = document.getElementById('lc-active-days');
+    if (activeDaysEl) activeDaysEl.textContent = `Active Days: ${activeDaysCount}`;
+
+    // Normalize timestamps to days map
+    const dayCountsMap = {};
+    for (const [timestampStr, count] of Object.entries(calendar)) {
+      const ts = parseInt(timestampStr, 10);
+      const date = new Date(ts * 1000);
+      const dateStr = date.toISOString().split('T')[0];
+      dayCountsMap[dateStr] = count;
+    }
+
+    // Build 52 weeks * 7 days grid (364 days) ending today
+    const totalDays = 364;
+    const today = new Date();
+
+    for (let i = totalDays - 1; i >= 0; i--) {
+      const d = new Date(today);
+      d.setDate(d.getDate() - i);
+      const dateStr = d.toISOString().split('T')[0];
+      const count = dayCountsMap[dateStr] || 0;
+
+      const sq = document.createElement('span');
+      sq.className = 'lc-sq';
+      if (count === 0) sq.classList.add('sq-0');
+      else if (count <= 2) sq.classList.add('sq-1');
+      else if (count <= 5) sq.classList.add('sq-2');
+      else if (count <= 8) sq.classList.add('sq-3');
+      else sq.classList.add('sq-4');
+
+      const formattedDate = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+      const labelText = count === 0 
+        ? `No submissions on ${formattedDate}` 
+        : `${count} submission${count > 1 ? 's' : ''} on ${formattedDate}`;
+
+      sq.title = labelText;
+      sq.addEventListener('mouseenter', (e) => showLcTooltip(e.target, labelText));
+      sq.addEventListener('mouseleave', () => hideLcTooltip());
+
+      gridEl.appendChild(sq);
+    }
+  }
+
+  function renderLeetCodeDefaults() {
+    const elAcc = document.getElementById('lc-acc-rate');
+    if (elAcc) elAcc.textContent = '66.7%';
+
+    const circle = document.getElementById('lc-ring-circle');
+    if (circle) circle.style.strokeDashoffset = 83.6;
+
+    document.getElementById('lc-easy-txt').textContent = '1 / 963';
+    document.getElementById('lc-med-txt').textContent = '0 / 2111';
+    document.getElementById('lc-hard-txt').textContent = '0 / 973';
+
+    document.getElementById('lc-easy-bar').style.width = '0.5%';
+    document.getElementById('lc-med-bar').style.width = '0%';
+    document.getElementById('lc-hard-bar').style.width = '0%';
+
+    document.getElementById('lc-total').textContent = '1';
+    document.getElementById('lc-rank').textContent = '#5,000,001';
+    document.getElementById('lc-subs').textContent = '6';
+    document.getElementById('lc-points').textContent = '98';
+
+    renderLeetCodeHeatmap({"1762819200": 4, "1782950400": 1});
   }
 
   fetchGitHubStats();
   fetchLeetCodeStats();
 
-  document.getElementById('refresh-stats-btn').addEventListener('click', () => {
-    fetchGitHubStats();
-    fetchLeetCodeStats();
-  });
+  const refreshGhBtn = document.getElementById('refresh-gh-btn');
+  const refreshLcBtn = document.getElementById('refresh-lc-btn');
+
+  if (refreshGhBtn) refreshGhBtn.addEventListener('click', fetchGitHubStats);
+  if (refreshLcBtn) refreshLcBtn.addEventListener('click', fetchLeetCodeStats);
 
   // 6. ONE-CLICK EMAIL COPY BOX
   const copyBox = document.getElementById('copy-email-box');
@@ -257,7 +408,7 @@ document.addEventListener('DOMContentLoaded', () => {
           lineResp.textContent = `GitHub: https://github.com/jatins2405`;
           break;
         case 'leetcode':
-          lineResp.textContent = `LeetCode: https://leetcode.com/jatins2405 (350+ Solved)`;
+          lineResp.textContent = `LeetCode: https://leetcode.com/u/DEX010/ (350+ Solved)`;
           break;
         case 'contact':
           lineResp.textContent = `Email: jatinsharma24062005@gmail.com`;
