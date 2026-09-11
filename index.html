@@ -506,64 +506,96 @@
           </button>
         </div>
 
-        <!-- Top Row: Acceptance Rate & Performance Stats -->
-        <div class="grid-2 lc-top-grid">
+        <!-- Top Row: Stacked Cards (Left: Acceptance Rate + Solved Breakdown; Right: Performance Stats) -->
+        <div class="lc-top-grid">
           
-          <!-- Card 1: Acceptance Rate Ring & Difficulty Breakdown -->
-          <div class="card lc-card reveal delay-1">
-            <div class="card-header-line">
-              <div class="flex-center gap-sm">
-                <span class="icon-lg">🎯</span>
-                <div>
-                  <h3>Acceptance Rate</h3>
-                  <div class="mono-sub">Difficulty Breakdown</div>
+          <!-- Left Column (Stacked Cards) -->
+          <div class="lc-col-left">
+            
+            <!-- Card 1A: Acceptance Rate Ring Gauge -->
+            <div class="card lc-card reveal delay-1">
+              <div class="card-header-line">
+                <div class="flex-center gap-sm">
+                  <span class="icon-lg">🎯</span>
+                  <div>
+                    <h3>Acceptance Rate</h3>
+                    <div class="mono-sub">Submission Accuracy</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Ring Gauge Meter -->
+              <div class="lc-ring-container">
+                <div class="lc-ring-wrap">
+                  <svg viewBox="0 0 100 100" class="lc-ring-svg">
+                    <circle cx="50" cy="50" r="40" class="lc-ring-bg"></circle>
+                    <circle cx="50" cy="50" r="40" class="lc-ring-progress" id="lc-ring-circle" stroke-dasharray="251.2" stroke-dashoffset="251.2"></circle>
+                  </svg>
+                  <div class="lc-ring-text">
+                    <span id="lc-acc-rate" class="num-big">0.0%</span>
+                    <span class="lc-ring-label">Acceptance</span>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <!-- Ring Gauge Meter -->
-            <div class="lc-ring-container">
-              <div class="lc-ring-wrap">
-                <svg viewBox="0 0 100 100" class="lc-ring-svg">
-                  <circle cx="50" cy="50" r="40" class="lc-ring-bg"></circle>
-                  <circle cx="50" cy="50" r="40" class="lc-ring-progress" id="lc-ring-circle" stroke-dasharray="251.2" stroke-dashoffset="251.2"></circle>
-                </svg>
-                <div class="lc-ring-text">
-                  <span id="lc-acc-rate" class="num-big">0.0%</span>
-                  <span class="lc-ring-label">Acceptance</span>
+            <!-- Card 1B: Solved Breakdown Arc Gauge (New Section Below Acceptance Rate) -->
+            <div class="card lc-card reveal delay-1">
+              <div class="card-header-line">
+                <div class="flex-center gap-sm">
+                  <span class="icon-lg">🧩</span>
+                  <div>
+                    <h3>Solved Breakdown</h3>
+                    <div class="mono-sub">Problem Distribution</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="lc-pie-container">
+                <!-- Circular Arc Gauge -->
+                <div class="lc-gauge-wrap">
+                  <svg viewBox="0 0 100 100" class="lc-gauge-svg">
+                    <!-- Background Tracks for Easy, Medium, Hard -->
+                    <circle cx="50" cy="50" r="38" class="lc-bg-arc easy" id="lc-bg-easy"></circle>
+                    <circle cx="50" cy="50" r="38" class="lc-bg-arc medium" id="lc-bg-med"></circle>
+                    <circle cx="50" cy="50" r="38" class="lc-bg-arc hard" id="lc-bg-hard"></circle>
+
+                    <!-- Active Progress Arcs for Easy, Medium, Hard -->
+                    <circle cx="50" cy="50" r="38" class="lc-gauge-arc easy" id="lc-arc-easy"></circle>
+                    <circle cx="50" cy="50" r="38" class="lc-gauge-arc medium" id="lc-arc-med"></circle>
+                    <circle cx="50" cy="50" r="38" class="lc-gauge-arc hard" id="lc-arc-hard"></circle>
+                  </svg>
+                  <div class="lc-gauge-center">
+                    <div class="lc-gauge-solved">
+                      <span id="lc-pie-solved" class="gauge-num">1</span><span class="gauge-slash">/</span><span id="lc-pie-total" class="gauge-denom">4047</span>
+                    </div>
+                    <div class="lc-gauge-check">✓ Solved</div>
+                    <div class="lc-gauge-att">0 Attempting</div>
+                  </div>
+                </div>
+
+                <!-- Right Side Difficulty Pills -->
+                <div class="lc-gauge-pills">
+                  <div class="gauge-pill easy">
+                    <span class="pill-title">Easy</span>
+                    <span id="lc-pie-easy" class="pill-count">1/963</span>
+                  </div>
+                  <div class="gauge-pill medium">
+                    <span class="pill-title">Med.</span>
+                    <span id="lc-pie-med" class="pill-count">0/2111</span>
+                  </div>
+                  <div class="gauge-pill hard">
+                    <span class="pill-title">Hard</span>
+                    <span id="lc-pie-hard" class="pill-count">0/973</span>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div class="progress-bars-stack" style="margin-top: 1rem;">
-              <div>
-                <div class="flex-between text-sm">
-                  <span class="lc-diff-label easy">Easy</span>
-                  <span id="lc-easy-txt">0 / 0</span>
-                </div>
-                <div class="bar-track"><div id="lc-easy-bar" class="bar-fill fill-easy" style="width: 0%;"></div></div>
-              </div>
-
-              <div>
-                <div class="flex-between text-sm">
-                  <span class="lc-diff-label medium">Medium</span>
-                  <span id="lc-med-txt">0 / 0</span>
-                </div>
-                <div class="bar-track"><div id="lc-med-bar" class="bar-fill fill-medium" style="width: 0%;"></div></div>
-              </div>
-
-              <div>
-                <div class="flex-between text-sm">
-                  <span class="lc-diff-label hard">Hard</span>
-                  <span id="lc-hard-txt">0 / 0</span>
-                </div>
-                <div class="bar-track"><div id="lc-hard-bar" class="bar-fill fill-hard" style="width: 0%;"></div></div>
-              </div>
-            </div>
           </div>
 
-          <!-- Card 2: Performance Stats Metrics & Recent Submission -->
-          <div class="card lc-card reveal delay-2">
+          <!-- Right Column: Performance Stats Card -->
+          <div class="card lc-card lc-card-right reveal delay-2">
             <div class="card-header-line">
               <div class="flex-center gap-sm">
                 <span class="icon-lg">📊</span>

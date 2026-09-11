@@ -557,9 +557,11 @@ button {
   transform: translateX(14px) scale(0.96);
 }
 
-/* Disable hover color change & scale zoom for Contact section cards */
+/* Disable hover color change & scale zoom for Contact & LeetCode section cards */
 #contact .card:hover,
-#leetcode-stats .card:hover {
+#leetcode-stats .card:hover,
+#leetcode-stats .lc-flip-card:hover,
+#leetcode-stats .lc-card-face:hover {
   background-color: var(--bg-card) !important;
   border-color: var(--border-color) !important;
   transform: none !important;
@@ -567,7 +569,8 @@ button {
 }
 
 #contact .card:hover .badge,
-#leetcode-stats .card:hover .badge {
+#leetcode-stats .card:hover .badge,
+#leetcode-stats .lc-card-face:hover .badge {
   background: var(--bg-badge);
   border-color: var(--border-color);
   color: var(--text-primary);
@@ -579,8 +582,10 @@ button {
 #contact div:hover ~ div .card,
 #leetcode-stats .card:has(~ .card:hover),
 #leetcode-stats .card:hover ~ .card,
-#leetcode-stats div:has(~ div .card:hover),
-#leetcode-stats div:hover ~ div .card {
+#leetcode-stats div:has(~ div:hover),
+#leetcode-stats div:hover ~ div,
+#leetcode-stats .lc-top-grid div:has(~ div:hover),
+#leetcode-stats .lc-top-grid div:hover ~ div {
   opacity: 1 !important;
   transform: none !important;
 }
@@ -812,9 +817,35 @@ button {
 .fill-secondary { background: var(--text-secondary); }
 .fill-muted { background: var(--border-bright); }
 
-/* LEETCODE LIVE DASHBOARD 3-CARD STYLING */
-.lc-dashboard-grid {
-  margin-top: 1rem;
+/* LEETCODE LIVE DASHBOARD LAYOUT */
+.lc-top-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+.lc-col-left {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.lc-col-left .card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.1rem 1.4rem;
+}
+
+.lc-card-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
 }
 
 .lc-card {
@@ -823,20 +854,132 @@ button {
   justify-content: space-between;
 }
 
+/* LEETCODE SOLVED GAUGE PIE/ARC BREAKDOWN SECTION */
+.lc-pie-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.lc-gauge-wrap {
+  position: relative;
+  width: 138px;
+  height: 138px;
+  flex-shrink: 0;
+}
+
+.lc-gauge-svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.lc-bg-arc {
+  fill: none;
+  stroke-width: 7;
+}
+
+.lc-bg-arc.easy { stroke: rgba(16, 185, 129, 0.25); }
+.lc-bg-arc.medium { stroke: rgba(245, 158, 11, 0.25); }
+.lc-bg-arc.hard { stroke: rgba(239, 68, 68, 0.25); }
+
+.lc-gauge-arc {
+  fill: none;
+  stroke-width: 7;
+  stroke-linecap: round;
+  transition: stroke-dasharray 0.8s ease-in-out, stroke-dashoffset 0.8s ease-in-out;
+}
+
+.lc-gauge-arc.easy { stroke: #10b981; }
+.lc-gauge-arc.medium { stroke: #f59e0b; }
+.lc-gauge-arc.hard { stroke: #ef4444; }
+
+.lc-gauge-center {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.lc-gauge-solved {
+  font-weight: 800;
+  line-height: 1;
+}
+
+.gauge-num {
+  font-size: 1.215rem;
+  font-family: var(--font-mono);
+  color: var(--text-primary);
+}
+
+.gauge-slash, .gauge-denom {
+  font-size: 0.675rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+.lc-gauge-check {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: #10b981;
+  margin-top: 0.15rem;
+}
+
+.lc-gauge-att {
+  font-size: 0.58rem;
+  color: var(--text-muted);
+  margin-top: 0.1rem;
+}
+
+.lc-gauge-pills {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  flex-grow: 1;
+}
+
+.gauge-pill {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 0.35rem 0.65rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.gauge-pill.easy .pill-title { color: #10b981; font-weight: 700; font-size: 0.78rem; }
+.gauge-pill.medium .pill-title { color: #f59e0b; font-weight: 700; font-size: 0.78rem; }
+.gauge-pill.hard .pill-title { color: #ef4444; font-weight: 700; font-size: 0.78rem; }
+
+.pill-count {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+
 .card-header-line {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1.25rem;
+  margin-bottom: 0.85rem;
 }
 
 .icon-lg {
-  font-size: 1.5rem;
+  font-size: 1.35rem;
 }
 
 .mono-sub {
   font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: var(--text-muted);
 }
 
@@ -845,13 +988,14 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0.75rem 0;
+  flex-grow: 1;
+  margin: 0.5rem 0;
 }
 
 .lc-ring-wrap {
   position: relative;
-  width: 130px;
-  height: 130px;
+  width: 132px;
+  height: 132px;
 }
 
 .lc-ring-svg {
@@ -886,8 +1030,12 @@ button {
   align-items: center;
 }
 
+.lc-ring-text .num-big {
+  font-size: 1.15rem;
+}
+
 .lc-ring-label {
-  font-size: 0.75rem;
+  font-size: 0.61rem;
   font-family: var(--font-mono);
   color: var(--text-muted);
   text-transform: uppercase;

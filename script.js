@@ -193,19 +193,101 @@ document.addEventListener('DOMContentLoaded', () => {
       const hardSolved = data.hardSolved ?? 0;
       const totalHard = data.totalHard ?? 973;
 
-      document.getElementById('lc-easy-txt').textContent = `${easySolved} / ${totalEasy}`;
-      document.getElementById('lc-med-txt').textContent = `${medSolved} / ${totalMed}`;
-      document.getElementById('lc-hard-txt').textContent = `${hardSolved} / ${totalHard}`;
+      const elEasyTxt = document.getElementById('lc-easy-txt');
+      const elMedTxt = document.getElementById('lc-med-txt');
+      const elHardTxt = document.getElementById('lc-hard-txt');
+      if (elEasyTxt) elEasyTxt.textContent = `${easySolved} / ${totalEasy}`;
+      if (elMedTxt) elMedTxt.textContent = `${medSolved} / ${totalMed}`;
+      if (elHardTxt) elHardTxt.textContent = `${hardSolved} / ${totalHard}`;
 
-      document.getElementById('lc-easy-bar').style.width = `${Math.min(100, Math.max(0.5, (easySolved / totalEasy) * 100))}%`;
-      document.getElementById('lc-med-bar').style.width = `${Math.min(100, (medSolved / totalMed) * 100)}%`;
-      document.getElementById('lc-hard-bar').style.width = `${Math.min(100, (hardSolved / totalHard) * 100)}%`;
+      const elEasyBar = document.getElementById('lc-easy-bar');
+      const elMedBar = document.getElementById('lc-med-bar');
+      const elHardBar = document.getElementById('lc-hard-bar');
+      if (elEasyBar) elEasyBar.style.width = `${Math.min(100, Math.max(0.5, (easySolved / totalEasy) * 100))}%`;
+      if (elMedBar) elMedBar.style.width = `${Math.min(100, (medSolved / totalMed) * 100)}%`;
+      if (elHardBar) elHardBar.style.width = `${Math.min(100, (hardSolved / totalHard) * 100)}%`;
 
       // Metrics Card
       document.getElementById('lc-total').textContent = totalSolved;
       document.getElementById('lc-rank').textContent = ranking;
       document.getElementById('lc-subs').textContent = totalSubs;
       document.getElementById('lc-points').textContent = points;
+
+      // Solved Breakdown gauge elements
+      const totalQ = data.totalQuestions || 4047;
+      const elPieSolved = document.getElementById('lc-pie-solved');
+      const elPieTotal = document.getElementById('lc-pie-total');
+      const elPieEasy = document.getElementById('lc-pie-easy');
+      const elPieMed = document.getElementById('lc-pie-med');
+      const elPieHard = document.getElementById('lc-pie-hard');
+
+      if (elPieSolved) elPieSolved.textContent = totalSolved;
+      if (elPieTotal) elPieTotal.textContent = totalQ;
+      if (elPieEasy) elPieEasy.textContent = `${easySolved}/${totalEasy}`;
+      if (elPieMed) elPieMed.textContent = `${medSolved}/${totalMed}`;
+      if (elPieHard) elPieHard.textContent = `${hardSolved}/${totalHard}`;
+
+      // Render Solved Breakdown 3-Section Gauge (Easy, Medium, Hard)
+      const r = 38;
+      const C = 2 * Math.PI * r; // ~238.761
+      const gap = 5; // Gap between sections in pixels
+      const totalGaps = gap * 3; // 15px
+      const usableC = C - totalGaps; // 223.761px
+
+      const easyTotalQ = totalEasy || 963;
+      const medTotalQ = totalMed || 2111;
+      const hardTotalQ = totalHard || 973;
+      const grandTotalQ = easyTotalQ + medTotalQ + hardTotalQ || totalQ || 4047;
+
+      const lenEasy = usableC * (easyTotalQ / grandTotalQ);
+      const lenMed = usableC * (medTotalQ / grandTotalQ);
+      const lenHard = usableC * (hardTotalQ / grandTotalQ);
+
+      // Start Green (Easy) at bottom-left corner (~7:30 o'clock), then Yellow (Medium) across top & right, then Red (Hard) across bottom
+      const startOffset = -140;
+      const offsetEasy = startOffset;
+      const offsetMed = offsetEasy - (lenEasy + gap);
+      const offsetHard = offsetMed - (lenMed + gap);
+
+      // Background arcs (Easy: green, Med: yellow, Hard: red)
+      const bgEasy = document.getElementById('lc-bg-easy');
+      const bgMed = document.getElementById('lc-bg-med');
+      const bgHard = document.getElementById('lc-bg-hard');
+
+      if (bgEasy) {
+        bgEasy.style.strokeDasharray = `${lenEasy} ${C - lenEasy}`;
+        bgEasy.style.strokeDashoffset = `${offsetEasy}`;
+      }
+      if (bgMed) {
+        bgMed.style.strokeDasharray = `${lenMed} ${C - lenMed}`;
+        bgMed.style.strokeDashoffset = `${offsetMed}`;
+      }
+      if (bgHard) {
+        bgHard.style.strokeDasharray = `${lenHard} ${C - lenHard}`;
+        bgHard.style.strokeDashoffset = `${offsetHard}`;
+      }
+
+      // Active fill arcs proportional to solved questions per difficulty
+      const activeEasyLen = easySolved > 0 ? Math.min(lenEasy, Math.max(14, lenEasy * (easySolved / easyTotalQ))) : 0;
+      const activeMedLen = medSolved > 0 ? Math.min(lenMed, Math.max(14, lenMed * (medSolved / medTotalQ))) : 0;
+      const activeHardLen = hardSolved > 0 ? Math.min(lenHard, Math.max(14, lenHard * (hardSolved / hardTotalQ))) : 0;
+
+      const arcEasy = document.getElementById('lc-arc-easy');
+      const arcMed = document.getElementById('lc-arc-med');
+      const arcHard = document.getElementById('lc-arc-hard');
+
+      if (arcEasy) {
+        arcEasy.style.strokeDasharray = `${activeEasyLen} ${C - activeEasyLen}`;
+        arcEasy.style.strokeDashoffset = `${offsetEasy}`;
+      }
+      if (arcMed) {
+        arcMed.style.strokeDasharray = `${activeMedLen} ${C - activeMedLen}`;
+        arcMed.style.strokeDashoffset = `${offsetMed}`;
+      }
+      if (arcHard) {
+        arcHard.style.strokeDasharray = `${activeHardLen} ${C - activeHardLen}`;
+        arcHard.style.strokeDashoffset = `${offsetHard}`;
+      }
 
       // Recent Submission
       if (data.recentSubmissions && data.recentSubmissions.length > 0) {
@@ -316,6 +398,21 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('lc-rank').textContent = '#5,000,001';
     document.getElementById('lc-subs').textContent = '6';
     document.getElementById('lc-points').textContent = '98';
+
+    const elPieSolved = document.getElementById('lc-pie-solved');
+    const elPieTotal = document.getElementById('lc-pie-total');
+    const elPieEasy = document.getElementById('lc-pie-easy');
+    const elPieMed = document.getElementById('lc-pie-med');
+    const elPieHard = document.getElementById('lc-pie-hard');
+
+    if (elPieSolved) elPieSolved.textContent = '1';
+    if (elPieTotal) elPieTotal.textContent = '4047';
+    if (elPieEasy) elPieEasy.textContent = '1/963';
+    if (elPieMed) elPieMed.textContent = '0/2111';
+    if (elPieHard) elPieHard.textContent = '0/973';
+
+    const arcEasy = document.getElementById('lc-arc-easy');
+    if (arcEasy) arcEasy.style.strokeDashoffset = 230;
 
     renderLeetCodeHeatmap({"1762819200": 4, "1782950400": 1});
   }
